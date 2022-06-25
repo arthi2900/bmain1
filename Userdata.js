@@ -18,7 +18,6 @@ router.post("/", async function (req, res) {
     const result = await Userpost(data);
     res.send(result);
 });
-/*
 router.get("/", async function (req, res) {
     console.log(req.params);
     const { id } = req.params;
@@ -27,7 +26,7 @@ router.get("/", async function (req, res) {
     .collection("User").find().toArray();
     res.send(result);
 });
-*/
+
 router.get("/:id",async function (req, res) {
     console.log(req.params);
     const { id } = req.params;
