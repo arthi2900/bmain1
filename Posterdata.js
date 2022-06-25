@@ -16,14 +16,14 @@ router.post("/", async function (req, res) {
 router.get("/:pid", async function (req, res) {
     console.log(req.params);
     const { pid } = req.params;
-    //const stud=student.find((mv)=>mv.id === id);
+    
     const result = await Posterget(pid);
     res.send(result);
 });
 router.get("/", async function (req, res) {
     console.log(req.params);
     const { pid } = req.params;
-    //const stud=student.find((mv)=>mv.id === id);
+
     const result = await  client.db("socialmedia")
     .collection("Poster").find().toArray();
     res.send(result);
