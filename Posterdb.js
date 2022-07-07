@@ -1,16 +1,16 @@
 import { client } from './index.js';
-import {ObjectId} from "mongodb";
-export async function Posterput(pid, updateData) {
+import { ObjectId } from 'mongodb';
+export async function Posterput(id, updateData) {
     return await client.db("socialmedia")
-        .collection("Poster").updateOne({pid:pid  }, { $set: updateData });
+        .collection("Poster").updateOne({_id: ObjectId(id)}, { $set: updateData });
 }
-export function Postdelete(pid) {
+export function Postdelete(id) {
     return client.db("socialmedia")
-        .collection("Poster").deleteOne({pid:pid   });
+        .collection("Poster").deleteOne({_id: ObjectId(id)});
 }
-export async function Posterget(pid) {
+export async function Posterget(id) {
     return await client.db("socialmedia")
-        .collection("Poster").findOne({ pid:pid});
+        .collection("Poster").findOne({_id: ObjectId(id)});
 }
 export async function Posterpost(data1) {
     return await client.db("socialmedia")

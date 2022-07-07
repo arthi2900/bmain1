@@ -1,22 +1,23 @@
 import { client } from './index.js';
-import {ObjectId} from "mongodb";
+import { ObjectId } from 'mongodb';
 export function Userput(id, updateData) {
     return client.db("socialmedia")
-        .collection("User").updateOne({id:id }, { $set: updateData });
+        .collection("User").updateOne({_id: ObjectId(id)}, { $set: updateData });
 }
 export async function Userdelete(id) {
     return await client.db("socialmedia")
-        .collection("User").deleteOne({id: id });
+        .collection("User").deleteOne({_id: ObjectId(id)});
 }
 export async function Userget(id) {
     return await client.db("socialmedia")
-        .collection("User").find({id: id}).toArray();
+        .collection("User").find({_id: ObjectId(id)}).toArray();
 }
 
 export async function Userpost(data) {
     return await client.db("socialmedia")
-        .collection("User").insertMany(data);
+        .collection("User").insertOne(data);
 }
+
 export async function Usersignuppost(data) {
     return await client.db("socialmedia")
         .collection("User").insertOne(data);
